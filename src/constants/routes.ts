@@ -8,7 +8,7 @@ export const ROUTES = {
   PROJECT: "/projects/:projectId",
 
   ISSUES: "/issues",
-  CREATE_ISSUE: "/issues/create",
+  CREATE_ISSUE: "/create-issue",
 
   SETTINGS: "/settings",
 
