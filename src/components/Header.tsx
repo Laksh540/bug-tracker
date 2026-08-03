@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Menu, User } from "lucide-react";
 import {
   DropdownMenu,
@@ -6,13 +5,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface HeaderProps {
   onMenuToggle: () => void;
 }
 
 const Header = ({ onMenuToggle }: HeaderProps) => {
-  const navigate = useNavigate();
+  const { user, logout } = useAuth();
 
   return (
     <header className="flex h-14 items-center justify-between border-b px-4 lg:px-6">
@@ -26,11 +26,11 @@ const Header = ({ onMenuToggle }: HeaderProps) => {
         <DropdownMenuTrigger asChild>
           <button className="flex items-center gap-2 text-sm font-medium">
             <User className="h-4 w-4" />
-            John Doe
+            {user?.name}
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onSelect={() => navigate("/login")}>
+          <DropdownMenuItem onSelect={logout}>
             Logout
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -10,39 +10,51 @@ import { ROUTES } from "@/constants/routes";
 import SettingsPage from "@/pages/SettingsPage";
 import IssuesPage from "@/pages/IssuesPage";
 import CreateIssuesPage from "@/pages/CreateIssuesPage";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import PublicRoute from "@/components/PublicRoute";
 
 export const router = createBrowserRouter([
   {
-    element: <AppLayout />,
+    element: <ProtectedRoute />,
     children: [
       {
-        path: ROUTES.SETTINGS,
-        element: <SettingsPage />,
-      },
-      {
-        path: ROUTES.DASHBOARD,
-        element: <DashboardPage />,
-      },
-      {
-        path: ROUTES.ISSUES,
-        element: <IssuesPage />,
-      },
-      {
-        path: ROUTES.CREATE_ISSUE,
-        element: <CreateIssuesPage />,
+        element: <AppLayout />,
+        children: [
+          {
+            path: ROUTES.SETTINGS,
+            element: <SettingsPage />,
+          },
+          {
+            path: ROUTES.DASHBOARD,
+            element: <DashboardPage />,
+          },
+          {
+            path: ROUTES.ISSUES,
+            element: <IssuesPage />,
+          },
+          {
+            path: ROUTES.CREATE_ISSUE,
+            element: <CreateIssuesPage />,
+          },
+        ],
       },
     ],
   },
   {
-    element: <AuthLayout />,
+    element: <PublicRoute />,
     children: [
       {
-        path: ROUTES.LOGIN,
-        element: <LoginPage />,
-      },
-      {
-        path: ROUTES.SIGNUP,
-        element: <SignupPage />,
+        element: <AuthLayout />,
+        children: [
+          {
+            path: ROUTES.LOGIN,
+            element: <LoginPage />,
+          },
+          {
+            path: ROUTES.SIGNUP,
+            element: <SignupPage />,
+          },
+        ],
       },
     ],
   },
