@@ -6,37 +6,85 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: oklch(0.922 0 0);
-  --code-bg: #f4f3ec;
-  --accent: oklch(0.97 0 0);
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /*
+   * BugTracker spacing scale (1 unit = 4px).
+   * Use these tokens instead of introducing one-off spacing values.
+   */
+  --space-0: 0rem;
+  --space-1: 0.125rem; /* 2px */
+  --space-2: 0.25rem; /* 4px */
+  --space-3: 0.5rem; /* 8px */
+  --space-4: 0.75rem; /* 12px */
+  --space-5: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 2rem; /* 32px */
+  --space-8: 3rem; /* 48px */
+  --space-9: 4rem; /* 64px */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Typography roles: keep text styles consistent across the product. */
+  --type-page-title-size: 2.25rem;
+  --type-page-title-line: 2.5rem;
+  --type-section-title-size: 1.5rem;
+  --type-section-title-line: 2rem;
+  --type-card-title-size: 1.125rem;
+  --type-card-title-line: 1.5rem;
+  --type-body-size: 1rem;
+  --type-body-line: 1.5rem;
+  --type-small-size: 0.875rem;
+  --type-small-line: 1.25rem;
+  --type-button-size: 0.875rem;
+  --type-button-line: 1.25rem;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /*
+   * Semantic application palette.
+   * Components should consume these roles instead of one-off color values.
+   */
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Brand and action colors */
+  --color-app-primary: #6d28d9;
+  --color-app-primary-hover: #5b21b6;
 
+  /* Background colors */
+  --color-app-secondary: #f5f3ff;
+  --color-app-background: #fafafa;
+  --color-app-surface: #ffffff;
+
+  /* Text colors */
+  --color-app-text-primary: #111827;
+  --color-app-text-secondary: #6b7280;
+
+  /* Border colors */
+  --color-app-border: #e5e7eb;
+  --color-app-border-primary: #d1d5db;
+  --color-app-border-secondary: #e5e7eb;
+  --color-app-border-tertiary: #f3f4f6;
+
+  /* Status palette: each state has a readable background, text, and border. */
+  --status-success-bg: #dcfce7;
+  --status-success-text: #166534;
+  --status-success-border: #86efac;
+  --status-warning-bg: #fef3c7;
+  --status-warning-text: #92400e;
+  --status-warning-border: #fcd34d;
+  --status-error-bg: #fee2e2;
+  --status-error-text: #991b1b;
+  --status-error-border: #fca5a5;
+  --status-info-bg: #dbeafe;
+  --status-info-text: #1e40af;
+  --status-info-border: #93c5fd;
+  --status-open-bg: #f3e8ff;
+  --status-open-text: #6b21a8;
+  --status-open-border: #d8b4fe;
+  --status-in-progress-bg: #e0f2fe;
+  --status-in-progress-text: #075985;
+  --status-in-progress-border: #7dd3fc;
+  --status-closed-bg: #f3f4f6;
+  --status-closed-text: #374151;
+  --status-closed-border: #d1d5db;
+
+  /* shadcn/ui theme tokens (used by the generated UI primitives). */
   --background: oklch(1 0 0);
+  --border: oklch(0.922 0 0);
 
   --foreground: oklch(0.145 0 0);
 
@@ -96,26 +144,6 @@
 
   --sidebar-ring: oklch(0.708 0 0)}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
 #root {
   min-height: 100svh;
 }
@@ -124,51 +152,64 @@ body {
   margin: 0;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
-
 @theme inline {
+  /* Expose the design-system scale to Tailwind utilities (p-*, gap-*, etc.).
+   * NOTE: Tailwind utility numbers differ from token numbers — `p-2` maps to
+   * `--space-3` (8px), not `--space-2` (4px). */
+  --spacing-0: var(--space-0);
+  --spacing-0\.5: var(--space-1);
+  --spacing-1: var(--space-2);
+  --spacing-2: var(--space-3);
+  --spacing-3: var(--space-4);
+  --spacing-4: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-7);
+  --spacing-12: var(--space-8);
+  --spacing-16: var(--space-9);
+  --text-page-title: var(--type-page-title-size);
+  --text-page-title--line-height: var(--type-page-title-line);
+  --text-section-title: var(--type-section-title-size);
+  --text-section-title--line-height: var(--type-section-title-line);
+  --text-card-title: var(--type-card-title-size);
+  --text-card-title--line-height: var(--type-card-title-line);
+  --text-body: var(--type-body-size);
+  --text-body--line-height: var(--type-body-line);
+  --text-small: var(--type-small-size);
+  --text-small--line-height: var(--type-small-line);
+  --text-button: var(--type-button-size);
+  --text-button--line-height: var(--type-button-line);
+  --color-app-brand: var(--color-app-primary);
+  --color-app-brand-hover: var(--color-app-primary-hover);
+  --color-app-surface: var(--color-app-surface);
+  --color-app-secondary: var(--color-app-secondary);
+  --color-app-background: var(--color-app-background);
+  --color-app-border: var(--color-app-border);
+  --color-app-text-primary: var(--color-app-text-primary);
+  --color-app-text-secondary: var(--color-app-text-secondary);
+  --color-app-border-primary: var(--color-app-border-primary);
+  --color-app-border-secondary: var(--color-app-border-secondary);
+  --color-app-border-tertiary: var(--color-app-border-tertiary);
+  --color-status-success-bg: var(--status-success-bg);
+  --color-status-success-text: var(--status-success-text);
+  --color-status-success-border: var(--status-success-border);
+  --color-status-warning-bg: var(--status-warning-bg);
+  --color-status-warning-text: var(--status-warning-text);
+  --color-status-warning-border: var(--status-warning-border);
+  --color-status-error-bg: var(--status-error-bg);
+  --color-status-error-text: var(--status-error-text);
+  --color-status-error-border: var(--status-error-border);
+  --color-status-info-bg: var(--status-info-bg);
+  --color-status-info-text: var(--status-info-text);
+  --color-status-info-border: var(--status-info-border);
+  --color-status-open-bg: var(--status-open-bg);
+  --color-status-open-text: var(--status-open-text);
+  --color-status-open-border: var(--status-open-border);
+  --color-status-in-progress-bg: var(--status-in-progress-bg);
+  --color-status-in-progress-text: var(--status-in-progress-text);
+  --color-status-in-progress-border: var(--status-in-progress-border);
+  --color-status-closed-bg: var(--status-closed-bg);
+  --color-status-closed-text: var(--status-closed-text);
+  --color-status-closed-border: var(--status-closed-border);
   --font-heading: var(--font-sans);
   --font-sans: 'Geist Variable', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
@@ -243,6 +284,40 @@ code {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* BugTracker semantic tokens — derive from shadcn dark roles. */
+  --color-app-background: var(--background);
+  --color-app-surface: var(--card);
+  --color-app-text-primary: var(--foreground);
+  --color-app-text-secondary: var(--muted-foreground);
+  --color-app-border: var(--border);
+  --color-app-border-primary: var(--border);
+  --color-app-border-secondary: var(--border);
+  --color-app-border-tertiary: color-mix(in oklch, var(--border) 50%, transparent);
+  --color-app-secondary: color-mix(in oklch, var(--color-app-primary) 12%, var(--card));
+
+  /* Status palette — translucent tint of the text color over the surface. */
+  --status-success-bg: color-mix(in oklch, var(--status-success-text) 15%, transparent);
+  --status-success-text: #86efac;
+  --status-success-border: #86efac;
+  --status-warning-bg: color-mix(in oklch, var(--status-warning-text) 15%, transparent);
+  --status-warning-text: #fcd34d;
+  --status-warning-border: #fcd34d;
+  --status-error-bg: color-mix(in oklch, var(--status-error-text) 15%, transparent);
+  --status-error-text: #fca5a5;
+  --status-error-border: #fca5a5;
+  --status-info-bg: color-mix(in oklch, var(--status-info-text) 15%, transparent);
+  --status-info-text: #93c5fd;
+  --status-info-border: #93c5fd;
+  --status-open-bg: color-mix(in oklch, var(--status-open-text) 15%, transparent);
+  --status-open-text: #d8b4fe;
+  --status-open-border: #d8b4fe;
+  --status-in-progress-bg: color-mix(in oklch, var(--status-in-progress-text) 15%, transparent);
+  --status-in-progress-text: #7dd3fc;
+  --status-in-progress-border: #7dd3fc;
+  --status-closed-bg: color-mix(in oklch, var(--status-closed-text) 15%, transparent);
+  --status-closed-text: #d1d5db;
+  --status-closed-border: #d1d5db;
 }
 
 @layer base {
