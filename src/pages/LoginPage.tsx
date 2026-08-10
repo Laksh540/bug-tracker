@@ -1,4 +1,5 @@
 import { MOCK_USER, useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
   const { login, user } = useAuth();
@@ -7,7 +8,7 @@ export default function LoginPage() {
   return (
     <>
       <h1>Login Page</h1>
-      <button onClick={() => login({ ...MOCK_USER })}>login</button>
+      <Button onClick={() => login({ ...MOCK_USER })}>Login</Button>
     </>
   );
 }

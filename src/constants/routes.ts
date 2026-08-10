@@ -11,6 +11,7 @@ export const ROUTES = {
   CREATE_ISSUE: "/create-issue",
 
   SETTINGS: "/settings",
+  DEMO: "/demo",
 
   NOT_FOUND: "*",
 } as const;

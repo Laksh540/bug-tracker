@@ -15,6 +15,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 const projects = [
   { id: "1", name: "Bug Tracker" },
@@ -35,16 +36,18 @@ const Sidebar = () => {
     <nav className="flex flex-col gap-1 p-4">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button
+          <Button
+            variant="ghost"
+            size="lg"
             className={cn(
-              "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              "w-full justify-start gap-3",
               "text-sidebar-foreground hover:bg-sidebar-accent/50",
             )}
           >
             <Building2 className="h-4 w-4 shrink-0" />
             <span className="truncate">{selectedProject.name}</span>
             <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
-          </button>
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="start">
           {projects.map((project) => (

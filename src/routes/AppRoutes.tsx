@@ -12,6 +12,7 @@ import IssuesPage from "@/pages/IssuesPage";
 import CreateIssuesPage from "@/pages/CreateIssuesPage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import PublicRoute from "@/components/PublicRoute";
+import DemoPage from "@/pages/DemoPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.SETTINGS,
             element: <SettingsPage />,
+          },
+          {
+            path: ROUTES.DEMO,
+            element: <DemoPage />,
           },
           {
             path: ROUTES.DASHBOARD,
