@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -19,25 +20,26 @@ const Header = ({ onMenuToggle }: HeaderProps) => {
   return (
     <header className="flex h-14 items-center justify-between border-b px-4 lg:px-6">
       <div className="flex items-center gap-3">
-        <button onClick={onMenuToggle} className="lg:hidden">
+        <Button onClick={onMenuToggle} size="icon" variant="ghost" className="lg:hidden" aria-label="Open navigation">
           <Menu className="h-5 w-5" />
-        </button>
+        </Button>
         <span className="text-lg font-semibold">Bug Tracker</span>
       </div>
       <div className="flex items-center gap-2">
-        <button
+        <Button
           onClick={toggleTheme}
           aria-label="Toggle dark mode"
-          className="flex h-9 w-9 items-center justify-center rounded-md hover:bg-muted"
+          size="icon-lg"
+          variant="ghost"
         >
           {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-        </button>
+        </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="flex items-center gap-2 text-sm font-medium">
+            <Button variant="ghost" className="gap-2">
               <User className="h-4 w-4" />
               {user?.name}
-            </button>
+            </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem onSelect={logout}>

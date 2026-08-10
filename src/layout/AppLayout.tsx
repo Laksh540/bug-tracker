@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import MainContent from "@/components/MainContent";
+import { Button } from "@/components/ui/button";
 
 export default function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,9 +27,9 @@ export default function AppLayout() {
       >
         <div className="flex items-center justify-between p-4 lg:hidden">
           <span className="text-lg font-semibold">Bug Tracker</span>
-          <button onClick={() => setSidebarOpen(false)}>
+          <Button onClick={() => setSidebarOpen(false)} size="icon" variant="ghost" aria-label="Close navigation">
             <X className="h-5 w-5" />
-          </button>
+          </Button>
         </div>
         <Sidebar />
       </aside>

@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export default function DashboardPage() {
   const statuses = [
     [
@@ -109,9 +111,9 @@ export default function DashboardPage() {
             <p className="text-card-title font-semibold">Card title</p>
             <p className="text-body">Body text</p>
             <p className="text-small text-app-text-secondary">Helper text</p>
-            <button className="w-fit rounded-md bg-app-brand px-4 py-2 text-button font-medium text-white hover:bg-app-brand-hover">
+            <Button className="w-fit">
               Button text
-            </button>
+            </Button>
           </div>
         </article>
       </section>
