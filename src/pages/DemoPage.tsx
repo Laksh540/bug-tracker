@@ -1,6 +1,7 @@
 import { ArrowRight, Check, LoaderCircle, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function DemoPage() {
   return (
@@ -10,10 +11,10 @@ export default function DemoPage() {
           Component preview
         </p>
         <h1 className="text-page-title font-bold text-app-text-primary">
-          Button demo
+          Component demo
         </h1>
         <p className="text-body text-app-text-secondary">
-          A selection of button variants, sizes, states, and icon combinations.
+          A selection of button and input variants, sizes, states, and icon combinations.
         </p>
       </header>
 
@@ -28,6 +29,20 @@ export default function DemoPage() {
           <Button variant="ghost">Ghost</Button>
           <Button variant="destructive">Destructive</Button>
           <Button variant="link">Link</Button>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-4 rounded-lg border border-app-border-secondary bg-app-surface p-6">
+        <h2 className="text-card-title font-semibold text-app-text-primary">
+          Inputs
+        </h2>
+        <div className="grid max-w-xl gap-3 sm:grid-cols-2">
+          <Input placeholder="Default input" />
+          <Input variant="filled" placeholder="Filled input" />
+          <Input size="sm" placeholder="Small input" />
+          <Input size="lg" placeholder="Large input" />
+          <Input disabled placeholder="Disabled input" />
+          <Input aria-invalid="true" placeholder="Invalid input" />
         </div>
       </section>
 
