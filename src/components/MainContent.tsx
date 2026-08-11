@@ -8,7 +8,7 @@ interface MainContentProps {
 
 const MainContent = ({ children, className }: MainContentProps) => {
   return (
-    <main className={cn("flex-1 overflow-y-auto p-4 lg:p-6", className)}>
+    <main className={cn("app-scrollbar flex-1 overflow-y-auto p-4 lg:p-6", className)}>
       {children}
     </main>
   );

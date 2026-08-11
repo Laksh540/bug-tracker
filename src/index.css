@@ -152,6 +152,46 @@ body {
   margin: 0;
 }
 
+/* Keep application scroll areas subtle and legible across themes. */
+.app-scrollbar {
+  scrollbar-color: #a1a1aa transparent;
+  scrollbar-width: thin;
+}
+
+.app-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-scrollbar::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+.app-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d4d4d8;
+  background-clip: padding-box;
+}
+
+.dark .app-scrollbar {
+  scrollbar-color: #52525b transparent;
+}
+
+.dark .app-scrollbar::-webkit-scrollbar-thumb {
+  background: #52525b;
+  background-clip: padding-box;
+}
+
+.dark .app-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+  background-clip: padding-box;
+}
+
 @theme inline {
   /* Expose the design-system scale to Tailwind utilities (p-*, gap-*, etc.).
    * NOTE: Tailwind utility numbers differ from token numbers — `p-2` maps to
