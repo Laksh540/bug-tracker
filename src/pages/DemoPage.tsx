@@ -2,6 +2,7 @@ import { ArrowRight, Check, LoaderCircle, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function DemoPage() {
   return (
@@ -14,7 +15,7 @@ export default function DemoPage() {
           Component demo
         </h1>
         <p className="text-body text-app-text-secondary">
-          A selection of button and input variants, sizes, states, and icon combinations.
+          A selection of button, input, and textarea variants, sizes, states, and combinations.
         </p>
       </header>
 
@@ -29,6 +30,36 @@ export default function DemoPage() {
           <Button variant="ghost">Ghost</Button>
           <Button variant="destructive">Destructive</Button>
           <Button variant="link">Link</Button>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-4 rounded-lg border border-app-border-secondary bg-app-surface p-6">
+        <h2 className="text-card-title font-semibold text-app-text-primary">
+          Textareas
+        </h2>
+        <div className="grid max-w-3xl gap-4 sm:grid-cols-2">
+          <Textarea placeholder="Default textarea" />
+          <Textarea variant="filled" placeholder="Filled textarea" />
+          <Textarea size="sm" placeholder="Small textarea" />
+          <Textarea size="lg" placeholder="Large textarea" />
+          <Textarea
+            defaultValue="This textarea includes some starter content."
+            rows={4}
+          />
+          <Textarea
+            placeholder="Describe the issue..."
+            aria-label="Issue description"
+            maxLength={240}
+          />
+          <Textarea disabled placeholder="Disabled textarea" />
+          <Textarea
+            aria-invalid="true"
+            placeholder="Textarea with an invalid state"
+          />
+          <Textarea
+            readOnly
+            defaultValue="Read-only textarea content"
+          />
         </div>
       </section>
 
